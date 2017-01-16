@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"   
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="user"><!-- 命名空间 -->
+
+	<!-- 给类起别名 以便下面使用 -->
+	 <typeAlias alias="user" type="com.jk.user.model.user.UserModel"/>
+	<typeAlias alias="level" type="com.jk.user.model.user.LevelModel"/>
+
+			<!--封装公用sql语句  -->
+		 <sql id="userWhere">
+			<isNotEmpty prepend="and" property="pageName">
+				 userName like '%'||#pageName#||'%'
+			</isNotEmpty>
+
+			<isNotEmpty prepend="and" property="minDate">
+
+				<![CDATA[ userBirthday >to_date(#minDate#,'yyyy-MM-dd') ]]>
+			</isNotEmpty>
+
+			 <isNotEmpty prepend="and" property="maxDate">
+
+				 <![CDATA[ userBirthday <to_date(#maxDate#,'yyyy-MM-dd') ]]>
+			 </isNotEmpty>
+
+			 <isGreaterThan prepend="and" property="pageSex" compareValue="0">
+				<![CDATA[ userSex =#pageSex# ]]>
+			</isGreaterThan>
+
+			 <isGreaterThan prepend="and" property="levelModel.id" compareValue="0">
+				 <![CDATA[ levelId =#levelModel.id# ]]>
+			 </isGreaterThan>
+		</sql>
+		
+		
+		<!--添加  -->
+		<insert id="addUser" parameterClass="user">
+			insert into t_person(id,userName,userHeader,userSex,userBirthday,levelId)
+			values(t_person_seq.nextval,#userName#,#userHeader#,#userSex#,to_date(#userBirthday#,'yyyy-MM-dd'),#levelModel.id#)
+		</insert>
+	
+		<!--查询列表  -->
+		<select id="findUserList" parameterClass="user" resultClass="user">
+			select * from(
+			select b.*,rownum rn from
+			(select p.id,userName,userHeader,userSex,to_char(userBirthday,'yyyy-MM-dd')userBirthday ,l.levelName  "levelModel.levelName" from t_person p left join t_level l on p.levelId=l.id
+			
+			 <dynamic prepend="where">
+			 	<include refid="userWhere"></include>
+			 </dynamic>
+			 order by id desc
+			 )b
+			where<![CDATA[  rownum <=#endPos#) where rn>#startPos#]]>
+		
+	</select>
+		<!--查询总条数  -->
+		<select id="findUserCount" parameterClass="user" resultClass="long">
+			select count(*) from t_person
+			 <dynamic prepend="where">
+		 		<include refid="userWhere"></include>
+			 </dynamic> 
+		</select>
+	<!-- 差单挑 -->
+	
+	<select id="findUserById" parameterClass="int" resultClass="user">
+		select id,userName,userHeader,userSex,to_char(userBirthday,'yyyy-MM-dd')userBirthday  from t_person where id=#value#
+	<!--用to_char把日期类型转为String类型  字段名变成了to_char 给这个字段起个别名 对应model类-->
+	</select>
+	<!--修改  -->
+	<update id="updateUserById" parameterClass="user">
+		update t_person set id=#id#,userName=#userName#,userSex=#userSex#,userHeader=#userHeader#,userBirthday=to_date(#userBirthday#,'yyyy-MM-dd'),levelId=#levelModel.id#
+		where id=#id#
+	</update>
+	<!--批量删除 -->
+	<delete id="deleteAll" parameterClass="list">
+	 delete t_person where id in
+	 
+	 <iterate conjunction="," open="(" close=")"> 
+		#[]#
+		</iterate>
+	</delete>
+	<!-- 单条删除-->
+	<delete id="deleteById" parameterClass="int">
+		delete t_person where id=#value#
+	</delete>
+<!--查询从表-->
+	<select id="findLevelList"  resultClass="level">
+		select * from t_level
+		<!--用to_char把日期类型转为String类型  字段名变成了to_char 给这个字段起个别名 对应model类-->
+	</select>
+</sqlMap>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ssi-user:war">
+    <output-path>$PROJECT_DIR$/ssi-user/target</output-path>
+    <root id="archive" name="ssi-user.war">
+      <element id="artifact" artifact-name="ssi-user:war exploded" />
+    </root>
+  </artifact>
+</component>

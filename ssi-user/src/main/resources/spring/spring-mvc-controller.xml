@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="GBK"?>
+<!--框架springmvc的配置文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:aop="http://www.springframework.org/schema/aop"  
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"  
+    xmlns:security="http://www.springframework.org/schema/security" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xsi:schemaLocation="  
+        http://www.springframework.org/schema/aop   
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+        http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+        http://www.springframework.org/schema/data/jpa   
+        http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd  
+        http://www.springframework.org/schema/tx   
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+        http://www.springframework.org/schema/mvc   
+    	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+     	
+        >
+        
+      <!--  <mvc:interceptors>
+   	<mvc:interceptor>
+   		<mvc:mapping path="/**"/>拦截所有请求路径 
+   			指明自定义拦截器的类 
+   			<bean id="loginInterceptor" class="com.jk.shop.zhangzp.interceptor.LoginInterceptor"></bean>
+   		</mvc:interceptor>
+   </mvc:interceptors> -->
+        
+        
+   
+   <!--用springmvc上传文件 在springmvc.xml文件中加入multipart 的解析器 -->
+	 <bean
+	
+		id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >
+		<!--设置上传文件大小  -->
+		<property name="maxUploadSize" value="10240000"></property>
+		
+		<property name="defaultEncoding" value="utf-8"/>
+		
+	</bean>  
+  
+	 <!--配置注解@responseBody 开启注解模式 -->
+	 <mvc:annotation-driven/>
+   
+
+   
+    <!-- 对项目中的指定包下所有类进行扫描以完成Bean创建并进行自动注入。  支持 @Controller、@Service 以及 @Repository 和 @Component -->
+	<!-- 扫描项目中com.jk.shop.controller包下所有的类，从而使类中的@Controller注解生效 它让注解生效后创建的bean就存在此配置文件中 ，但是隐藏的-->
+	<context:component-scan base-package="com.jk.user.controller" />
+
+
+    <!--视图就是展示的jsp页面
+        jsp视图解析器，对模型视图名称的解析，即在模型视图名称添加前后缀
+        如/view/welcome.jsp对应的视图名就是：welcome
+        这个类在视图解析器链中一定要定义在其他视图的后面，因为它始终会返回一个视图
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    
+    
+
+    
+</beans>

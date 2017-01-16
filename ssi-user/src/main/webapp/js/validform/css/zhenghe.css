@@ -1,0 +1,94 @@
+@CHARSET "UTF-8";
+	.dfinput {
+	    width: 345px;
+	    height: 32px;
+	    line-height: 32px;
+	    border-top: solid 1px #a7b5bc;
+	    border-left: solid 1px #a7b5bc;
+	    border-right: solid 1px #ced9df;
+	    border-bottom: solid 1px #ced9df;
+	    background: url(../resources/images/inputbg.gif) repeat-x;
+	    text-indent: 10px;
+	}
+	
+	.btn {
+	    width: 137px;
+	    height: 35px;
+	    background: url(../resources/images/btnbg.png) no-repeat;
+	    font-size: 14px;
+	    font-weight: bold;
+	    color: #fff;
+	    cursor: pointer;
+	    border: 0;
+	    margin: 0;
+	    padding: 0;
+	}
+	.place span {
+	    line-height: 40px;
+	    font-weight: bold;
+	    float: left;
+	    margin-left: 12px;
+        margin: 0;
+	    padding: 0;
+	    display: block;
+	}
+	.place {
+	    height: 40px;
+	    background: url(../resources/images/righttop.gif) repeat-x;
+	}
+	ul.placeul {
+	    margin: 0px;
+	}
+	.placeul li {
+	    float: left;
+	    line-height: 40px;
+	    background: url(../resources/images/rlist.gif) no-repeat right;
+        display: block;
+	    margin: 0;
+	    padding: 0;
+	    list-style: none;
+	}
+	a, a:focus {
+	    text-decoration: none;
+	    color: #000;
+	    outline: none;
+	    blr: expression(this.onFocus=this.blur());
+	}	
+	.formtitle {
+	    border-bottom: solid 1px #d0dee5;
+	    line-height: 35px;
+	    position: relative;
+	    height: 35px;
+	    margin-bottom: 10px;
+	    margin-top: 10px;
+	    margin-left: 18px;
+	}
+	.formtitle span {
+	    font-weight: bold;
+	    font-size: 14px;
+	    border-bottom: solid 3px #66c9f3;
+	    float: left;
+	    position: absolute;
+	    z-index: 100;
+	    bottom: -1px;
+	    padding: 0 3px;
+	    height: 30px;
+	    line-height: 30px;
+	    
+	 }
+	 .need{color: #b20202;}
+	 
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+	 
+	 
+	 

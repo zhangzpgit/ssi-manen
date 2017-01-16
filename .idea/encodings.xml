@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/ssi-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/java/com/jk/user/controller/user" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/java/com/jk/user/dao/user" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/java/com/jk/user/model/user" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/java/com/jk/user/service/user" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/java/com/jk/user/util" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/resources/ibatis" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/resources/logback.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/resources/oscache.properties" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/resources/spring" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/resources/sql-map-config.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/webapp/WEB-INF/view/easyuiuser" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/webapp/common" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/webapp/easyui" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ssi-user/src/main/webapp/js" charset="GBK" />
+  </component>
+</project>
